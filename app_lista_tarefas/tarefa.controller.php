@@ -2,8 +2,11 @@
     require "tarefa.service.php";
     require "tarefa.model.php";
     require "conexao.php";
+
     
     $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
+
+    /*echo $acao;*/
 
     if($acao == 'inserir') {
         $tarefa = new Tarefa();
