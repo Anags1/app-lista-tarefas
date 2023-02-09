@@ -33,10 +33,10 @@
         }
 
         public function atualizar() {
-            $query = "update tarefas set tarefa = :tarefa where id = :id";
+            $query = "update tarefas set tarefa = ? where id = ?";
             $statement = $this->conexao->prepare($query);
-            $statement->bindValue(':tarefa', $this->tarefa)->__get('tarefa');
-            $statement->bindValue(':id', $this->tarefa)->__get('id');
+            $statement->bindValue(1, $this->tarefa)->__get('tarefa');
+            $statement->bindValue(2, $this->tarefa)->__get('id');
             return $statement->execute();
         }
 
