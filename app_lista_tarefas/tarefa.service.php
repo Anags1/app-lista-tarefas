@@ -46,6 +46,13 @@
                 $statement->bindValue(':id', $this->tarefa->__get('id'));
                 $statement->execute();
         }
-  
+
+        public function marcarRealizada() {
+            $query = "update tarefas set id_status = ? where id = ?";
+            $statement = $this->conexao->prepare($query);
+            $statement->bindValue(1, $this->tarefa)->__get('id_status');
+            $statement->bindValue(2, $this->tarefa)->__get('id');
+            return $statement->execute();
+        }
     }
 ?>
