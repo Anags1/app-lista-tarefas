@@ -41,7 +41,10 @@
         }
 
         public function remover() {
-
+                $query = 'delete from tarefas where id = :id';
+                $statement = $this->conexao->prepare($query);
+                $statement->bindValue(':id', $this->tarefa->__get('id'));
+                $statement->execute();
         }
   
     }
