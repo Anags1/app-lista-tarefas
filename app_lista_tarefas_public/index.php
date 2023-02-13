@@ -1,15 +1,9 @@
 <!DOCTYPE html>
-<?php 
+<?php
+
 	$acao = 'recuperarTarefasPendentes';
-	require 'tarefa_controler.php';
-
-	/*
-	echo '<pre>';
-	print_r($tarefas);
-	echo '</pre>'
-	*/
+	require 'tarefa.controller.php';
 ?>
-
 
 <html>
 	<head>
@@ -24,7 +18,7 @@
 		<script>
 			function editar(id, txt_tarefa) {
 				let form = document.createElement('form')
-				form.action = 'tarefa.controller.php?acao-atualizar'
+				form.action = 'index.php?pag=index&acao=atualizar'
 				form.method = 'post'
 				form.className = 'row'
 
@@ -34,7 +28,7 @@
 				inputTarefa.className = 'col-9 form-control'
 				inputTarefa.value = txt_tarefa
 
-				let inputId  = document.createElement('input')
+				let inputId = document.createElement('input')
 				inputId.type = 'hidden'
 				inputId.name = 'id'
 				inputId.value = id
@@ -45,7 +39,9 @@
 				button.innerHTML = 'Atualizar'
 
 				form.appendChild(inputTarefa)
+
 				form.appendChild(inputId)
+
 				form.appendChild(button)
 
 				let tarefa = document.getElementById('tarefa_'+id)
@@ -55,15 +51,14 @@
 				tarefa.insertBefore(form, tarefa[0])
 			}
 
-			function remover(id){
-				location.href = 'index.php?pag=index$acao=remover&id='+id
+			function remover(id) {
+				location.href = 'index.php?pag=index&acao=remover&id='+id;
 			}
 
-			function marcarRealizada(id){
-				location.href = 'index.php?pag=index&acao=marcarRealizada&id='+id
+			function marcarRealizada(id) {
+				location.href = 'index.php?pag=index&acao=marcarRealizada&id='+id;
 			}
 		</script>
-
 	</head>
 
 	<body>
@@ -71,7 +66,7 @@
 			<div class="container">
 				<a class="navbar-brand" href="#">
 					<img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-					App Lista Tarefas
+					App Lista de Tarefas
 				</a>
 			</div>
 		</nav>
@@ -82,7 +77,7 @@
 					<ul class="list-group">
 						<li class="list-group-item active"><a href="#">Tarefas pendentes</a></li>
 						<li class="list-group-item"><a href="nova_tarefa.php">Nova tarefa</a></li>
-						<li class="list-group-item"><a href="todas_tarefas.php">Todas tarefas</a></li>
+						<li class="list-group-item"><a href="todas_tarefas.php">Todas as tarefas</a></li>
 					</ul>
 				</div>
 
@@ -92,19 +87,18 @@
 							<div class="col">
 								<h4>Tarefas pendentes</h4>
 								<hr />
-								<?php foreach($tarefas as $indice => $tarefa) { ?>             
+								<?php foreach($tarefas as $indice => $tarefa) { ?>
 									<div class="row mb-3 d-flex align-items-center tarefa">
 										<div class="col-sm-9" id="tarefa_<?= $tarefa->id ?>">
-											<?= $tarefa->tarefa ?> 
+											<?= $tarefa->tarefa ?>
 										</div>
-
 										<div class="col-sm-3 mt-2 d-flex justify-content-between">
 											<i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?= $tarefa->id ?>)"></i>
 											<i class="fas fa-edit fa-lg text-info" onclick="editar(<?= $tarefa->id ?>, '<?= $tarefa->tarefa ?>')"></i>
 											<i class="fas fa-check-square fa-lg text-success" onclick="marcarRealizada(<?= $tarefa->id ?>)"></i>
 										</div>
 									</div>
-                                <?php } ?>
+								<?php } ?>
 							</div>
 						</div>
 					</div>

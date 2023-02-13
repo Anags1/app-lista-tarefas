@@ -13,14 +13,14 @@
 			<div class="container">
 				<a class="navbar-brand" href="#">
 					<img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-					App Lista Tarefas
+					App Lista de Tarefas
 				</a>
 			</div>
 		</nav>
 
 		<?php if(isset($_GET['inclusao']) && $_GET['inclusao'] == 1) { ?>
 			<div class="bg-success pt-2 text-white d-flex justify-content-center">
-				<h5>Tarefa inserida com sucesso</h5>
+				<h5>Tarefa inserida com sucesso!</h5>
 			</div>
 		<?php } ?>
 

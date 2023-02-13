@@ -50,8 +50,7 @@
 
         $tarefaService = new TarefaService($conexao, $tarefa);
         $tarefaService->remover();
-
-                    
+                   
         if(isset($_GET['pag']) && $_GET['pag'] == 'index') {
             header('location:index.php');
         } else {
@@ -66,8 +65,7 @@
 
         $tarefaService = new TarefaService($conexao, $tarefa);
         $tarefaService->marcarRealizada();
-        
-                    
+             
         if(isset($_GET['pag']) && $_GET['pag'] == 'index') {
             header('location:index.php');
         } else {
