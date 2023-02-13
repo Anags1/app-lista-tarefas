@@ -18,7 +18,7 @@
 	<script>
 		function editar(id, txt_tarefa) {
 			let form = document.createElement('form')
-			form.action = 'tarefa.controller.php?acao-atualizar'
+			form.action = 'tarefa.controller.php?acao=atualizar'
 			form.method = 'post'
 			form.className = 'row'
 
@@ -54,7 +54,7 @@
 		}
 
 		function marcarRealizada(id){
-			location.href = 'todas_tarefas.php?acao=marcarRealizadar&id='+id
+			location.href = 'todas_tarefas.php?acao=marcarRealizada&id='+id
 		}
 	</script>
 
@@ -93,10 +93,10 @@
 										<div class="col-sm-3 mt-2 d-flex justify-content-between">
 											<i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?= $tarefa->id ?>)"></i>
 
-											<?= if($tarefa->status == 'pendente') { ?>
+											<?php if($tarefa->status == 'pendente') { ?>
 												<i class="fas fa-edit fa-lg text-info" onclick="editar(<?= $tarefa->id ?>, '<?= $tarefa->tarefa ?>')"></i>
 												<i class="fas fa-check-square fa-lg text-success" onclick="marcarRealizada(<?= $tarefa->id ?>)"></i>
-											<?= } ?>
+											<?php } ?>
 										</div>
 									</div>
                                 <?php } ?>
